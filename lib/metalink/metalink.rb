@@ -1,4 +1,5 @@
 require File.join(File.dirname(__FILE__), "file")
+require File.join(File.dirname(__FILE__), "bin_file")
 
 module Metalink
   class Metalink
@@ -7,11 +8,15 @@ module Metalink
       @version = 3
       @files = []
     end
-    
+
     def add_file(path, urls)
       @files << MetalinkFile.new(path, urls)
     end
-    
+
+    def add_binary(filename, binary, urls)
+      @files << MetalinkBinFile.new(filename, binary, urls)
+    end
+
     def to_s
       out = ""
       out << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
